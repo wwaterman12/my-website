@@ -4,13 +4,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import { useStore } from "vuex";
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     HelloWorld,
+  },
+  setup() {
+    const store = useStore();
+    onMounted(async () => {
+      await store.dispatch("getDadJoke");
+      console.log(
+        "%cOpening the console I see! Here's a (bad) joke for your troubles",
+        "color: #0000A0; font-size: 16px;"
+      );
+      console.log(store.getters.setup);
+      console.log(store.getters.punchline);
+    });
   },
 });
 </script>
