@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import { useStore } from "vuex";
+import { useStore } from "~/store";
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({

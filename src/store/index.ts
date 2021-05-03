@@ -1,4 +1,13 @@
-import { createStore, ActionTree, ActionContext, MutationTree, GetterTree } from "vuex";
+import { InjectionKey } from "vue";
+import {
+  createStore,
+  Store,
+  useStore as baseUseStore,
+  ActionTree,
+  ActionContext,
+  MutationTree,
+  GetterTree,
+} from "vuex";
 import { IDadJoke } from "~/lib/types";
 import fetchDadJoke from "~/api/dadJokes";
 
@@ -31,9 +40,15 @@ const mutations: MutationTree<State> = {
   },
 };
 
-export default createStore({
+export const key: InjectionKey<Store<State>> = Symbol();
+
+export const store = createStore<State>({
   state,
   getters,
   actions,
   mutations,
 });
+
+export function useStore() {
+  return baseUseStore(key);
+}
