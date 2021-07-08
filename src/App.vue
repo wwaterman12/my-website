@@ -18,7 +18,7 @@ export default defineComponent({
     onMounted(async () => {
       await store.dispatch("getDadJoke");
       console.log(
-        "%cOpening the console I see! Here's a (bad) joke for your troubles",
+        "%cOpening the console I see! Here's a (bad) programming joke for your troubles",
         "color: #0000A0; font-size: 16px;"
       );
       console.log(store.getters.setup);
