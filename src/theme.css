@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Hiragino Sans, Segoe UI, Roboto, Ubuntu, Helvetica Neue, Arial,
+    sans-serif;
+}
+
+:root {
+  --dark-blue: #12232e;
+  --lighter-Blue: #007cc7;
+  --dark-blue-shadow: #203647;
+  --lightest-blue: #4da8da;
+  --light-blue-shadow: #eefbfb;
+}
