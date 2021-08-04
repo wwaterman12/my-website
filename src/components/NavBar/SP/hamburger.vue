@@ -22,7 +22,7 @@ export default defineComponent({
 .hamburger {
   position: relative;
   width: 30px;
-  height: 22px;
+  height: 30px;
   transform: rotate(0deg);
   transition: all 0.5s ease-in-out;
   .line {
