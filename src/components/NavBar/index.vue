@@ -1,29 +1,23 @@
 <template>
-  <nav :class="$styles.navBar">
-    <ul>
-      <li><a href="#about">About Wes</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#work">Work Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contant</a></li>
-    </ul>
-  </nav>
+  <NavbarPC v-if="screenWidth > 500" />
+  <NavbarSP v-else />
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
-import $styles from "./styles.module.css";
+import { defineComponent, watch } from "vue";
+import NavbarPC from "./PC/index.vue";
+import NavbarSP from "./SP/index.vue";
+import useScreenSize from "~/lib/hooks/useScreenSize";
+
 export default defineComponent({
   name: "NavBar",
-  props: {
-    msg: {
-      type: String,
-      required: true,
-    },
+  components: {
+    NavbarPC,
+    NavbarSP,
   },
   setup: () => {
-    const count = ref(0);
-    return { count, $styles };
+    const { screenWidth } = useScreenSize();
+    return { screenWidth };
   },
 });
 </script>

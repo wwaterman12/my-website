@@ -16,8 +16,8 @@ body {
 
 :root {
   --dark-blue: #12232e;
-  --lighter-Blue: #007cc7;
-  --dark-blue-shadow: #203647;
-  --lightest-blue: #4da8da;
-  --light-blue-shadow: #eefbfb;
+  --light-blue: #007cc7;
+  --darker-blue: #203647;
+  --lighter-blue: #4da8da;
+  --white: #eefbfb;
 }
