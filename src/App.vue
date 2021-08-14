@@ -1,17 +1,20 @@
 <template>
   <NavBar />
+  <Projects />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import { useStore } from "~/store";
 import NavBar from "~/components/NavBar/index.vue";
+import Projects from "~/components/Projects/index.vue";
 import "~/theme.css";
 
 export default defineComponent({
   name: "App",
   components: {
     NavBar,
+    Projects,
   },
   setup() {
     const store = useStore();
