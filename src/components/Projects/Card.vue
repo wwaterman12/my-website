@@ -1,7 +1,7 @@
 <template>
   <div class="card" ref="card$El" @click="handleTransition">
-    <div class="inner" :class="{ back: isBack }">
-      {{ currentAnimation === "back" ? backText : frontText }}
+    <div class="inner" :class="{ back: activeSide === 'back' }">
+      {{ activeSide === "back" ? backText : frontText }}
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import { defineComponent, ref, computed } from "vue";
 import { delay } from "~/lib/utils";
 
-type CurrenAnimation = "forward" | "back";
+type ActiveSide = "forward" | "back";
 
 export default defineComponent({
   name: "Card",
@@ -19,31 +19,27 @@ export default defineComponent({
     backText: String,
   },
   setup() {
-    const card$El = ref(null);
+    const card$El = ref();
     const ANIMATIONS = {
       forward: `flipForward 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both`,
       back: `flipBack 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both`,
     };
-    const currentAnimation = ref<CurrenAnimation>("back");
-    const BACK: CurrenAnimation = "back";
-
-    const isBack = computed(() => currentAnimation.value === BACK);
+    const activeSide = ref<ActiveSide>("back");
 
     const handleTransition = async () => {
-      const newAnimation = {
+      const newActiveSide: ActiveSide = {
         forward: "back",
         back: "forward",
-      }[currentAnimation.value];
-      card$El.value.style.animation = ANIMATIONS[newAnimation];
+      }[activeSide.value];
+      card$El.value.style.animation = ANIMATIONS[newActiveSide];
       await delay(200);
-      currentAnimation.value = newAnimation;
+      activeSide.value = newActiveSide;
     };
 
     return {
       card$El,
-      currentAnimation,
+      activeSide,
       handleTransition,
-      isBack,
     };
   },
 });
